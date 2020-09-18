@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+<input type="button" id="btn" value="所有用户" />
+<input type="button" id="btn2" value="添加用户" />
+<div>
+	<table>
+		<thead>
+		<tr>
+			<th>用户名</th>
+			<th>密码</th>
+			<!--<th>拥有角色</th>-->
+			<!--<th>操作</th>-->
+		</tr>
+		</thead>
+		<tbody id="content">
+
+
+			<!--<td>-->
+				<!--<input type="button" name="" value="修改" />-->
+				<!--<input type="button" name="" value="删除" />-->
+			<!--</td>-->
+
+
+		</tbody>
+	</table>
+</div>
+
+<script src="/js/jquery-3.5.1.js"></script>
+<script>
+
+	$(function(){
+		$("#btn").click(function(){
+			$.post("/users",function(data){
+				console.log(data);
+				var html = "/users";
+				for(var i = 0;i < data.length; i ++){
+					html += "<tr>"+
+					"<td>"+data[i].name + "</td>"+
+					"<td>"+data[i].password + "</td>"+
+					"</tr>"
+				}
+				$("#content").html(html);
+
+
+			})
+		})
+	})
+
+
+</script>
+</body>
+</html>

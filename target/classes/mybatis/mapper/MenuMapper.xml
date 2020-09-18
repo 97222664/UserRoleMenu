@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuang.mapper.MenuMapper">
+
+    <select id="queryMenuList" resultType="Menu">
+        select * from permission.menu
+    </select>
+
+    <select id="queryMenuListById" resultType="Menu">
+        select * from permission.menu where id = #{id}
+    </select>
+
+
+
+    <select id="queryMenus" resultType="Menu">
+         select *
+         from permission.role_menu,permission.user_role,permission.menu
+         where
+         user_role.role_id = role_menu.role_id and menu.menu_id = role_menu.menu_id and user_role.user_id = #{id}
+    </select>
+
+
+
+
+
+</mapper>
